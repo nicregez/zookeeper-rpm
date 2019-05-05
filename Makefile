@@ -23,7 +23,7 @@ $(SOURCE): KEYS $(SOURCE).asc
 	gpg --verify $(SOURCE).asc $(SOURCE)
 
 clean:
-	@rm -rf $(TOPDIR) x86_64
+	@rm -rf $(TOPDIR) $(PWD)/RPMS
 	@rm -f $(SOURCE)
 
 $(SOURCE).asc:
