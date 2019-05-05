@@ -3,7 +3,8 @@
 %define name zookeeper
 %define _prefix /opt
 %define _conf_dir %{_sysconfdir}/zookeeper
-%define _log_dir %{_sharedstatedir}/zookeeper/log
+%define _log_dir %{_var}/log/zookeeper
+%define _change_log_dir %{_sharedstatedir}/zookeeper/log
 %define _data_dir %{_sharedstatedir}/zookeeper/data
 
 Summary: ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.
@@ -42,6 +43,7 @@ ZooKeeper is a centralized service for maintaining configuration information, na
 %install
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/zookeeper
 mkdir -p $RPM_BUILD_ROOT%{_log_dir}
+mkdir -p $RPM_BUILD_ROOT%{_change_log_dir}
 mkdir -p $RPM_BUILD_ROOT%{_data_dir}
 mkdir -p $RPM_BUILD_ROOT%{_unitdir}/zookeeper.service.d
 mkdir -p $RPM_BUILD_ROOT%{_conf_dir}/
@@ -97,5 +99,6 @@ fi
 %config(noreplace) %{_conf_dir}/*
 %attr(-,zookeeper,zookeeper) %{_prefix}/zookeeper
 %attr(0755,zookeeper,zookeeper) %dir %{_log_dir}
+%attr(0700,zookeeper,zookeeper) %dir %{_change_log_dir}
 %attr(0700,zookeeper,zookeeper) %dir %{_data_dir}
 
