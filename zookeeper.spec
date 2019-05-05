@@ -3,7 +3,7 @@
 %define name zookeeper
 %define _prefix /opt
 %define _conf_dir %{_sysconfdir}/zookeeper
-%define _log_dir %{_var}/log/zookeeper
+%define _log_dir %{_sharedstatedir}/zookeeper/log
 %define _data_dir %{_sharedstatedir}/zookeeper/data
 
 Summary: ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.
