@@ -7,7 +7,7 @@
 %define _change_log_dir %{_sharedstatedir}/zookeeper/log
 %define _data_dir %{_sharedstatedir}/zookeeper/data
 
-Summary: ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.
+Summary: Apache ZooKeeper.
 Name: zookeeper
 Version: %{version}
 Release: %{build_number}
@@ -25,7 +25,7 @@ Source7: zkcli
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Prefix: %{_prefix}
 Vendor: Apache Software Foundation
-Packager: Ivan Dyachkov <ivan.dyachkov@klarna.com>
+Packager: Nicolas Regez <nicolas.regez@swisscom.com>
 Provides: zookeeper
 BuildRequires: systemd
 Requires(post): systemd
@@ -33,7 +33,7 @@ Requires(preun): systemd
 Requires(postun): systemd
 
 %description
-ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. All of these kinds of services are used in some form or another by distributed applications. Each time they are implemented there is a lot of work that goes into fixing the bugs and race conditions that are inevitable. Because of the difficulty of implementing these kinds of services, applications initially usually skimp on them ,which make them brittle in the presence of change and difficult to manage. Even when done correctly, different implementations of these services lead to management complexity when the applications are deployed.
+Apache ZooKeeper.
 
 %prep
 %setup
@@ -101,4 +101,3 @@ fi
 %attr(0755,zookeeper,zookeeper) %dir %{_log_dir}
 %attr(0700,zookeeper,zookeeper) %dir %{_change_log_dir}
 %attr(0700,zookeeper,zookeeper) %dir %{_data_dir}
-
