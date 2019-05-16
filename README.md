@@ -57,20 +57,25 @@ Default locations
 
 binaries
 -   /opt/zookeeper
+
 configs
 -   /etc/zookeeper/zoo.cfg
 -   /etc/zookeeper/log4j.properties
 -   /etc/zookeeper/configuration.xsl
 -   /etc/sysconfig/zookeeper
 -   /etc/logrotate.d/zookeeper
+
 systemd
 -   /usr/lib/systemd/system/zookeeper.service.d/classpath.conf
 -   /usr/lib/systemd/system/zookeeper.service
+
 data
 -   /var/lib/zookeeper/data
 -   /var/lib/zookeeper/log
+
 logs
 -   /var/log/zookeeper
+
 command line
 -   /usr/local/bin/zkcli
 -   /etc/zookeeper/log4j-cli.properties
