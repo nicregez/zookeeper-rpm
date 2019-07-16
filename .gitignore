@@ -1,4 +1,5 @@
+/RPMS/
 /KEYS
 /zookeeper-*.tar.gz
 /zookeeper-*.tar.gz.asc
-/RPMS/
+/jolokia-jvm-*-agent.jar

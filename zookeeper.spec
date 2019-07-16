@@ -3,7 +3,7 @@
 %define name zookeeper
 %define _prefix /opt
 %define _conf_dir %{_sysconfdir}/zookeeper
-%define _log_dir %{_var}/log/zookeeper
+%define _log_dir %{_var}/log/zookeeper/log
 %define _change_log_dir %{_sharedstatedir}/zookeeper/log
 %define _data_dir %{_sharedstatedir}/zookeeper/data
 
@@ -15,13 +15,14 @@ License: Apache License, Version 2.0
 Group: Applications/Databases
 URL: http://zookeper.apache.org/
 Source0: zookeeper-%{version}.tar.gz
-Source1: zookeeper.service
-Source2: zookeeper.logrotate
-Source3: zoo.cfg
-Source4: log4j.properties
-Source5: log4j-cli.properties
-Source6: zookeeper.sysconfig
-Source7: zkcli
+Source1: jolokia-jvm-1.6.2-agent.jar
+Source2: zookeeper.service
+Source3: zookeeper.logrotate
+Source4: zoo.cfg
+Source5: log4j.properties
+Source6: log4j-cli.properties
+Source7: zookeeper.sysconfig
+Source8: zkcli
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Prefix: %{_prefix}
 Vendor: Apache Software Foundation
@@ -49,13 +50,14 @@ mkdir -p $RPM_BUILD_ROOT%{_unitdir}/zookeeper.service.d
 mkdir -p $RPM_BUILD_ROOT%{_conf_dir}/
 install -p -D -m 644 zookeeper-%{version}.jar $RPM_BUILD_ROOT%{_prefix}/zookeeper/
 install -p -D -m 644 lib/*.jar $RPM_BUILD_ROOT%{_prefix}/zookeeper/
-install -p -D -m 644 %{S:1} $RPM_BUILD_ROOT%{_unitdir}/
-install -p -D -m 644 %{S:2} $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d/zookeeper
-install -p -D -m 644 %{S:3} $RPM_BUILD_ROOT%{_conf_dir}/
+install -p -D -m 644 %{S:1} $RPM_BUILD_ROOT%{_prefix}/zookeeper/
+install -p -D -m 644 %{S:2} $RPM_BUILD_ROOT%{_unitdir}/
+install -p -D -m 644 %{S:3} $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d/zookeeper
 install -p -D -m 644 %{S:4} $RPM_BUILD_ROOT%{_conf_dir}/
 install -p -D -m 644 %{S:5} $RPM_BUILD_ROOT%{_conf_dir}/
-install -p -D -m 644 %{S:6} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/zookeeper
-install -p -D -m 755 %{S:7} $RPM_BUILD_ROOT/usr/local/bin/zkcli
+install -p -D -m 644 %{S:6} $RPM_BUILD_ROOT%{_conf_dir}/
+install -p -D -m 644 %{S:7} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/zookeeper
+install -p -D -m 755 %{S:8} $RPM_BUILD_ROOT/usr/local/bin/zkcli
 install -p -D -m 644 conf/configuration.xsl $RPM_BUILD_ROOT%{_conf_dir}/
 # stupid systemd fails to expand file paths in runtime
 CLASSPATH=

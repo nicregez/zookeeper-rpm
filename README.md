@@ -4,6 +4,7 @@ zookeeper-rpm
 A set of scripts to package zookeeper into an rpm.
 Requires CentOS/RedHat 7.
 Uses systemctl to register/manage service.
+Configures Jolokia as Java Agent.
 
 Setup
 -----
@@ -14,6 +15,7 @@ Product Documentation
 ---------------------
 
 https://zookeeper.apache.org/doc/r3.4.14/zookeeperAdmin.html
+https://jolokia.org/documentation.html
 
 Build
 -----
@@ -21,7 +23,8 @@ Build
     git clone https://github.com/nicregez/zookeeper-rpm.git
     cd zookeeper-rpm
     export VERSION=3.4.14
-    export BUILD_NUMBER=1
+    export BUILD_NUMBER=2
+    make jolokia
     make rpm
 
 Resulting RPM will be avaliable at $(shell pwd)/RPMS/x86_64
@@ -74,7 +77,7 @@ data
 -   /var/lib/zookeeper/log
 
 logs
--   /var/log/zookeeper
+-   /var/log/zookeeper/log
 
 command line
 -   /usr/local/bin/zkcli

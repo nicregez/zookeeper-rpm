@@ -12,4 +12,4 @@ WORKDIR /root
 
 VOLUME ["/root/RPMS"]
 
-CMD make
+CMD make jolokia; make rpm
