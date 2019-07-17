@@ -43,14 +43,15 @@ Apache ZooKeeper.
 
 %install
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/zookeeper
+mkdir -p $RPM_BUILD_ROOT%{_prefix}/zookeeper/lib
 mkdir -p $RPM_BUILD_ROOT%{_log_dir}
 mkdir -p $RPM_BUILD_ROOT%{_change_log_dir}
 mkdir -p $RPM_BUILD_ROOT%{_data_dir}
 mkdir -p $RPM_BUILD_ROOT%{_unitdir}/zookeeper.service.d
 mkdir -p $RPM_BUILD_ROOT%{_conf_dir}/
-install -p -D -m 644 zookeeper-%{version}.jar $RPM_BUILD_ROOT%{_prefix}/zookeeper/
-install -p -D -m 644 lib/*.jar $RPM_BUILD_ROOT%{_prefix}/zookeeper/
-install -p -D -m 644 %{S:1} $RPM_BUILD_ROOT%{_prefix}/zookeeper/
+install -p -D -m 644 zookeeper-%{version}.jar $RPM_BUILD_ROOT%{_prefix}/zookeeper/lib/
+install -p -D -m 644 lib/*.jar $RPM_BUILD_ROOT%{_prefix}/zookeeper/lib/
+install -p -D -m 644 %{S:1} $RPM_BUILD_ROOT%{_prefix}/zookeeper/lib/
 install -p -D -m 644 %{S:2} $RPM_BUILD_ROOT%{_unitdir}/
 install -p -D -m 644 %{S:3} $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d/zookeeper
 install -p -D -m 644 %{S:4} $RPM_BUILD_ROOT%{_conf_dir}/
@@ -61,9 +62,9 @@ install -p -D -m 755 %{S:8} $RPM_BUILD_ROOT/usr/local/bin/zkcli
 install -p -D -m 644 conf/configuration.xsl $RPM_BUILD_ROOT%{_conf_dir}/
 # stupid systemd fails to expand file paths in runtime
 CLASSPATH=
-for i in $RPM_BUILD_ROOT%{_prefix}/zookeeper/*.jar
+for i in $RPM_BUILD_ROOT%{_prefix}/zookeeper/lib/*.jar
 do
-  CLASSPATH="%{_prefix}/zookeeper/$(basename ${i}):${CLASSPATH}"
+  CLASSPATH="%{_prefix}/zookeeper/lib/$(basename ${i}):${CLASSPATH}"
 done
 echo "[Service]" > $RPM_BUILD_ROOT%{_unitdir}/zookeeper.service.d/classpath.conf
 echo "Environment=CLASSPATH=${CLASSPATH}" >> $RPM_BUILD_ROOT%{_unitdir}/zookeeper.service.d/classpath.conf

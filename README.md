@@ -59,7 +59,7 @@ Default locations
 -----------------
 
 binaries
--   /opt/zookeeper
+-   /opt/zookeeper/lib
 
 configs
 -   /etc/zookeeper/zoo.cfg

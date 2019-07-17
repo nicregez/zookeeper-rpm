@@ -1,6 +1,6 @@
 HEAP_OPTS=-Xms2g -Xmx2g
 LOG4J_OPTS=-Dlog4j.configuration=file:///etc/zookeeper/log4j.properties
 JMX_OPTS=-Dcom.sun.management.jmxremote.local.only=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.host=localhost -Dcom.sun.management.jmxremote.port=9998 -Dcom.sun.management.jmxremote.rmi.port=9998
-JAVA_OPTS=-javaagent:/opt/zookeeper/jolokia-jvm-1.6.2-agent.jar=host=localhost,port=8778
+JAVA_OPTS=-javaagent:/opt/zookeeper/lib/jolokia-jvm-1.6.2-agent.jar=host=localhost,port=8778
 ZOOKEEPER_MAIN=org.apache.zookeeper.server.quorum.QuorumPeerMain
 ZOOKEEPER_CONF=/etc/zookeeper/zoo.cfg
