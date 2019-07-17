@@ -1,4 +1,4 @@
-/var/log/zookeeper/*.log {
+/var/log/zookeeper/log/*.log {
        weekly
        rotate 4
        maxsize 100M
