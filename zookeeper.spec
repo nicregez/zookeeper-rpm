@@ -95,11 +95,11 @@ fi
 %defattr(-,root,root)
 %{_unitdir}/zookeeper.service
 %{_unitdir}/zookeeper.service.d/classpath.conf
+%{_prefix}/zookeeper
 /usr/local/bin/zkcli
 %config(noreplace) %{_sysconfdir}/logrotate.d/zookeeper
 %config(noreplace) %{_sysconfdir}/sysconfig/zookeeper
 %config(noreplace) %{_conf_dir}/*
-%attr(-,zookeeper,zookeeper) %{_prefix}/zookeeper
 %attr(0755,zookeeper,zookeeper) %dir %{_log_dir}
 %attr(0700,zookeeper,zookeeper) %dir %{_change_log_dir}
 %attr(0700,zookeeper,zookeeper) %dir %{_data_dir}
